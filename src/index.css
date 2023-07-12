@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navbar-height: 10vh;
+  --footer-height: 8vh;
+  --full-height: 100vh;
+  --main-height: calc(var(--full-height) - (var(--navbar-height) + var(--footer-height)))
+}
+
+.App,
+main,
+footer {
+  display: flex;
+}
+
+.App {
+  min-height: var(--full-height);
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+main {
+  min-height: var(--main-height);
+  /* background-color: aqua; */
+}
+
+footer {
+  height: var(--footer-height);
+}
