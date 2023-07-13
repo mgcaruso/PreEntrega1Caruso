@@ -14,6 +14,7 @@ export default {
         "primary-inverted-hover": "#3D3D41",
         "neutral": "#6b7280",
         "neutral-lighter":"#DADCE0",
+        "ultra-light": "#f3f4f6",
         "btn-fill": "#ba181b",
         "btn-fill-hover": "#a4161a",
         

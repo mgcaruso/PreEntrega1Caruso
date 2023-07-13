@@ -8,12 +8,12 @@ function App() {
     <div className="App">
 
       <NavBar />
-      <main className="bg-[#f3f4f6]">
+      <main className="bg-ultra-light flex justify-center items-center">
         <p className="text-3xl font-bold ">
           Hello world!
         </p>
       </main>
-      <footer>
+      <footer className="bg-primary-inverted flex justify-center items-center text-primary">
         <span>footer</span>
       </footer>
     </div>
