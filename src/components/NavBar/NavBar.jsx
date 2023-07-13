@@ -198,7 +198,6 @@ export default function NavBar() {
                                     )
                                     :
                                     <Disclosure.Button
-                                        onClick={() => item.name === "Categories" && setShowCategories(!showCategories)}
                                         key={item.name}
                                         as="a"
                                         href={item.href}
