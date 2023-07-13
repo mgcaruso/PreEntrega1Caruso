@@ -1,7 +1,8 @@
 import './navBar.css'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { FiMenu, FiX, FiShoppingCart } from "react-icons/fi";
+import { FiMenu, FiX, FiShoppingCart, FiChevronDown } from "react-icons/fi";
+import { useState } from 'react';
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -10,16 +11,18 @@ const navigation = [
     { name: 'Contact', href: '#', current: false },
 ]
 
+const categories = ["Classics", "Speed Cubes", "Mirror Cubes"]
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-const handleShowCategories = () => {
-    console.log("Executing function")
-}
+
 
 export default function NavBar() {
+    const [isOpen, setIsOpen] = useState(false);
+    
     return (
         <Disclosure id="navbar" as="nav" className="bg-primary">
             {({ open }) => (
@@ -27,8 +30,10 @@ export default function NavBar() {
                     <div className="mx-auto px-2 sm:px-6 lg:px-8">
                         <div className="relative flex h-16 items-center justify-between">
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+
                                 {/* Mobile menu button*/}
-                                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2                text-primary-inverted hover:bg-primary-inverted hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2                text-primary-inverted hover:bg-primary-inverted hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+                                >
                                     <span className="sr-only">Open main menu</span>
                                     {open ? (
                                         <FiX className="block h-6 w-6" aria-hidden="true" />
@@ -144,19 +149,68 @@ export default function NavBar() {
 
                     <Disclosure.Panel className="sm:hidden">
                         <div className="space-y-1 pb-3">
-                            {navigation.map((item) => (
-                                <Disclosure.Button
-                                    key={item.name}
-                                    as="a"
-                                    href={item.href}
-                                    className={classNames(
-                                        item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                        'block rounded-md px-3 py-2 text-base font-medium'
-                                    )}
-                                    aria-current={item.current ? 'page' : undefined}
-                                >
-                                    {item.name}
-                                </Disclosure.Button>
+                            {navigation.map((item, i) => (
+
+                                item.name === "Categories" ?
+
+                                    (
+                                        //Category container
+                                        <div key={i} className="mt-2 bg-ultra-ligh">
+
+                                            <>
+                                                <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between" >{item.name}
+
+                                                    <FiChevronDown
+                                                        className={`${isOpen ? 'rotate-180 transform' : ''
+                                                            } h-5 w-5 text-primary-inverted`}
+                                                    />
+                                                </button>
+
+
+                                                {
+                                                    isOpen &&
+                                                    <section className="categories-section pl-4">
+                                                        {
+                                                            categories.map((category, index) =>
+
+                                                                <Disclosure.Button
+                                                                    key={index}
+                                                                    as="a"
+                                                                    href="#"
+                                                                    className={classNames(
+                                                                        item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
+                                                                        'block rounded-md px-3 py-2 text-base font-medium'
+                                                                    )}
+                                                                    aria-current={item.current ? 'page' : undefined}
+                                                                >
+                                                                    {category}
+
+                                                                </Disclosure.Button>)
+                                                        }
+                                                    </section>
+                                                }
+
+
+                                            </>
+
+                                        </div>
+
+                                    )
+                                    :
+                                    <Disclosure.Button
+                                        onClick={() => item.name === "Categories" && setShowCategories(!showCategories)}
+                                        key={item.name}
+                                        as="a"
+                                        href={item.href}
+                                        className={classNames(
+                                            item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
+                                            'block rounded-md px-3 py-2 text-base font-medium'
+                                        )}
+                                        aria-current={item.current ? 'page' : undefined}
+                                    >
+                                        {item.name}
+
+                                    </Disclosure.Button>
                             ))}
                         </div>
                     </Disclosure.Panel>
@@ -165,3 +219,5 @@ export default function NavBar() {
         </Disclosure>
     )
 }
+
+
