@@ -123,18 +123,6 @@ export default function NavBar() {
 
                             <CartWidget quantity={5} />
 
-                            {/* 
-                            CART CODE
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                <button
-                                    type="button"
-                                    className="p-2 text-primary-inverted hover:text-neutral focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
-                                >
-                                    <span className="sr-only">View notifications</span>
-
-                                    <FiShoppingCart className="h-6 w-6" aria-hidden="true" />
-                                </button>
-                            </div> */}
 
                         </div>
                     </div>
@@ -171,7 +159,7 @@ export default function NavBar() {
                                                                     href="#"
                                                                     className={classNames(
                                                                         item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                                                        'block rounded-md px-3 py-2 text-base font-medium'
+                                                                        'block rounded-md px-3 py-2 text-base font-normal'
                                                                     )}
                                                                     aria-current={item.current ? 'page' : undefined}
                                                                 >
