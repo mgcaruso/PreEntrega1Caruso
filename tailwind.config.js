@@ -17,6 +17,8 @@ export default {
         "ultra-light": "#f3f4f6",
         "btn-fill": "#ba181b",
         "btn-fill-hover": "#a4161a",
+        "key-color": "#2d88f0",
+        "key-color-hover":"#549FF3"
         
       }
     },
