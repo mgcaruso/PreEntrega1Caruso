@@ -1,4 +1,5 @@
 import NavBar from './components/NavBar/NavBar'
+import './index.css'
 
 function App() {
 
@@ -7,13 +8,13 @@ function App() {
     <div className="App">
 
       <NavBar />
-      <main className="">
-        <h1 className="text-3xl font-bold underline bg-slate-100">
+      <main className="bg-[#f3f4f6]">
+        <p className="text-3xl font-bold ">
           Hello world!
-        </h1>
+        </p>
       </main>
       <footer>
-        <p>footer</p>
+        <span>footer</span>
       </footer>
     </div>
 
