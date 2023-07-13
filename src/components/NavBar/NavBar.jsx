@@ -22,7 +22,7 @@ function classNames(...classes) {
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
-    
+
     return (
         <Disclosure id="navbar" as="nav" className="bg-primary">
             {({ open }) => (
@@ -53,17 +53,68 @@ export default function NavBar() {
                                 <div className="hidden sm:ml-6 sm:block">
                                     <div className="flex space-x-4">
                                         {navigation.map((item) => (
-                                            <a
-                                                key={item.name}
-                                                href={item.href}
-                                                className={classNames(
-                                                    item.current ? 'bg-primary-inverted text-primary' : 'text-primary-invrted hover:bg-primary-hover hover:text-primary-inverted',
-                                                    'rounded-md px-3 py-2 text-sm font-medium'
-                                                )}
-                                                aria-current={item.current ? 'page' : undefined}
-                                            >
-                                                {item.name}
-                                            </a>
+
+                                            item.name === "Categories" ?
+                                                <>
+                                                    <Menu as="div" className="relative ml-3">
+                                                        <div>
+                                                            <Menu.Button className="font-medium flex rounded-md text-sm focus:outline-none">
+
+                                                                <Menu.Item>
+                                                                    {({ active }) => (
+                                                                        <a
+                                                                            href="#"
+                                                                            className={classNames(active ? 'rounded-md bg-primary-hover' : '', 'rounded-md block px-4 py-2 text-sm text-primary-inverted')}
+                                                                        >
+                                                                            Categories
+                                                                        </a>
+                                                                    )}
+                                                                </Menu.Item>
+                                                            </Menu.Button>
+                                                        </div>
+                                                        <Transition
+                                                            as={Fragment}
+                                                            enter="transition ease-out duration-100"
+                                                            enterFrom="transform opacity-0 scale-95"
+                                                            enterTo="transform opacity-100 scale-100"
+                                                            leave="transition ease-in duration-75"
+                                                            leaveFrom="transform opacity-100 scale-100"
+                                                            leaveTo="transform opacity-0 scale-95"
+                                                        >
+                                                            <Menu.Items className="absolute -left-1 z-10 mt-2 w-48 origin-top-right rounded-md bg-primary py-1 shadow-lg focus:outline-none">
+                                                                {
+                                                                    categories.map((category, index) =>
+                                                                        <Menu.Item key={index}>
+                                                                            {({ active }) => (
+                                                                                <a
+                                                                                    href="#"
+                                                                                    className={classNames(active ? 'bg-primary-hover' : '', 'block px-4 py-2 text-sm text-primary-inverted')}
+                                                                                >
+                                                                                    {category}
+                                                                                </a>
+                                                                            )}
+                                                                        </Menu.Item>
+
+                                                                    )
+                                                                }
+
+                                                            </Menu.Items>
+                                                        </Transition>
+                                                    </Menu>
+                                                </>
+                                                :
+
+                                                <a
+                                                    key={item.name}
+                                                    href={item.href}
+                                                    className={classNames(
+                                                        item.current ? 'bg-primary-inverted text-primary' : 'text-primary-inverted hover:bg-primary-hover hover:text-primary-inverted',
+                                                        'rounded-md px-3 py-2 text-sm font-medium'
+                                                    )}
+                                                    aria-current={item.current ? 'page' : undefined}
+                                                >
+                                                    {item.name}
+                                                </a>
                                         ))}
                                     </div>
                                 </div>
@@ -79,15 +130,11 @@ export default function NavBar() {
                                 </button>
 
                                 {/* Categories dropdown */}
-                                <Menu as="div" className="relative ml-3">
+                                {/* <Menu as="div" className="relative ml-3">
                                     <div>
                                         <Menu.Button className="flex rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-primary-inverted">
                                             <span className="sr-only">Open user menu</span>
-                                            {/* <img
-                                                className="h-8 w-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                                alt=""
-                                            /> */}
+                                            
                                             <Menu.Item>
                                                 {({ active }) => (
                                                     <a
@@ -110,39 +157,25 @@ export default function NavBar() {
                                         leaveTo="transform opacity-0 scale-95"
                                     >
                                         <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-primary py-1 shadow-lg ring-1 ring-primary-inverted ring-opacity-5 focus:outline-none">
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-primary-hover' : '', 'block px-4 py-2 text-sm text-primary-inverted')}
-                                                    >
-                                                        Your Profile
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-primary-hover' : '', 'block px-4 py-2 text-sm text-primary-inverted')}
-                                                    >
-                                                        Settings
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <a
-                                                        href="#"
-                                                        className={classNames(active ? 'bg-primary-hover' : '', 'block px-4 py-2 text-sm text-primary-inverted')}
-                                                    >
-                                                        Sign out
-                                                    </a>
-                                                )}
-                                            </Menu.Item>
+                                            {
+                                                categories.map((category, index) =>
+                                                    <Menu.Item key={index}>
+                                                        {({ active }) => (
+                                                            <a
+                                                                href="#"
+                                                                className={classNames(active ? 'bg-primary-hover' : '', 'block px-4 py-2 text-sm text-primary-inverted')}
+                                                            >
+                                                                {category}
+                                                            </a>
+                                                        )}
+                                                    </Menu.Item>
+
+                                                )
+                                            }
+
                                         </Menu.Items>
                                     </Transition>
-                                </Menu>
+                                </Menu> */}
                             </div>
                         </div>
                     </div>
@@ -155,7 +188,7 @@ export default function NavBar() {
 
                                     (
                                         //Category container
-                                        <div key={i} className="mt-2 bg-ultra-ligh">
+                                        <div key={i} className="mt-2 bg-ultra-light">
 
                                             <>
                                                 <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between" >{item.name}
