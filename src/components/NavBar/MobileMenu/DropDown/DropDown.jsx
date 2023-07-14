@@ -24,7 +24,7 @@ const DropDown = ({ list, i, isOpen, setIsOpen, item, classNameFn }) => {
 
                     {
                         isOpen &&
-                        <section className="categories-section pl-4 p-5">
+                        <section className="categories-section pl-4">
                             {
                                 list.map((category, index) =>
 

@@ -6,6 +6,7 @@ import CartWidget from './CartWidget/CartWidget';
 import { Cross as Hamburger } from 'hamburger-react'
 import { transitionClasses } from '../../Transitions/TransitionClasses';
 import MobileMenu from './MobileMenu/MobileMenu';
+import LogoSolvix from '../../assets/logo.png'
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -46,8 +47,9 @@ export default function NavBar() {
                                 <div className="flex flex-shrink-0 items-center">
                                     <img
                                         className="h-8 w-auto"
-                                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                                        alt="Your Company"
+                                        // src={"https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"}
+                                        src={LogoSolvix}
+                                        alt="Solvix Ecommerce Logo"
                                     />
                                 </div>
                                 <div className="hidden sm:ml-6 sm:block">
