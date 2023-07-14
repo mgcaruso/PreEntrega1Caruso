@@ -11,7 +11,9 @@
   --navbar-height: 10vh;
   --footer-height: 8vh;
   --full-height: 100vh;
-  --main-height: calc(var(--full-height) - (var(--navbar-height) + var(--footer-height)))
+  --main-height: calc(var(--full-height) - (var(--navbar-height) + var(--footer-height)));
+  --key-color: "#549ff3"
+
 }
 
 * {
