@@ -131,7 +131,6 @@ export default function NavBar() {
                     >
                         {/* DROP DOWN PANEL */}
                         <MobileMenu navigation={navigation} categories={categories} isCategoriesOpen={isCategoriesOpen} setIsCategoriesOpen={setIsCategoriesOpen} />
-
                     </Transition>
 
                 </>

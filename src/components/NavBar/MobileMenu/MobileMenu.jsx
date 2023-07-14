@@ -1,6 +1,5 @@
-import { Disclosure, Transition } from '@headlessui/react'
-import { FiChevronDown } from "react-icons/fi";
-import { transitionClasses } from '../../../Transitions/TransitionClasses';
+import { Disclosure } from '@headlessui/react'
+import DropDown from './DropDown/DropDown'
 
 
 const MobileMenu = ({ navigation, categories, isCategoriesOpen, setIsCategoriesOpen }) => {
@@ -14,55 +13,13 @@ const MobileMenu = ({ navigation, categories, isCategoriesOpen, setIsCategoriesO
 
                     item.name === "Categories" ?
 
-                        (
-                            //Category container
-                            <div key={i} className="mt-2 bg-ultra-light">
+                        //Category drop down
+                        <div key={i}>
+                            
+                        <DropDown list={categories} i={i} isOpen={isCategoriesOpen} setIsOpen={setIsCategoriesOpen} item={item} classNameFn={classNames} />
+                        </div>
 
-                                <>
-                                    <button onClick={() => setIsCategoriesOpen(!isCategoriesOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between text-primary-inverted" >{item.name}
 
-                                        <FiChevronDown
-                                            className={`${isCategoriesOpen ? 'rotate-180 transform' : ''
-                                                } h-5 w-5 text-primary-inverted`}
-                                        />
-                                    </button>
-
-                                    <Transition
-                                        show={isCategoriesOpen}
-                                        {...transitionClasses.flyOutTop}
-                                    >
-
-                                        {
-                                            isCategoriesOpen &&
-                                            <section className="categories-section pl-4">
-                                                {
-                                                    categories.map((category, index) =>
-
-                                                        <Disclosure.Button
-                                                            onClick={() => setIsCategoriesOpen(false)}
-                                                            key={index}
-                                                            as="a"
-                                                            href="#"
-                                                            className={classNames(
-                                                                item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                                                'block rounded-md px-3 py-2 text-base font-normal'
-                                                            )}
-                                                            aria-current={item.current ? 'page' : undefined}
-                                                        >
-                                                            {category}
-
-                                                        </Disclosure.Button>)
-                                                }
-                                            </section>
-                                        }
-
-                                    </Transition>
-
-                                </>
-
-                            </div>
-
-                        )
                         :
                         <Disclosure.Button
                             key={item.name}
