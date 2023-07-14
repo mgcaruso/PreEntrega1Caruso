@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react'
-import DropDown from './DropDown/DropDown'
+import CustomDisclosure from './CustomDisclosure/CustomDisclosure'
 
 
 const MobileMenu = ({ navigation, categories, isCategoriesOpen, setIsCategoriesOpen }) => {
@@ -16,7 +16,7 @@ const MobileMenu = ({ navigation, categories, isCategoriesOpen, setIsCategoriesO
                         //Category drop down
                         <div key={i}>
                             
-                        <DropDown list={categories} i={i} isOpen={isCategoriesOpen} setIsOpen={setIsCategoriesOpen} item={item} classNameFn={classNames} />
+                        <CustomDisclosure list={categories} i={i} isOpen={isCategoriesOpen} setIsOpen={setIsCategoriesOpen} item={item} classNameFn={classNames} />
                         </div>
 
 

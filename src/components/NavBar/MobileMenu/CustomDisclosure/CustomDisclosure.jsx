@@ -3,7 +3,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { transitionClasses } from '../../../../Transitions/TransitionClasses';
 
 
-const DropDown = ({ list, i, isOpen, setIsOpen, item, classNameFn }) => {
+const CustomDisclosure = ({ list, i, isOpen, setIsOpen, item, classNameFn }) => {
 
     return (
         <div key={i} className="mt-2 bg-ultra-light">
@@ -54,4 +54,4 @@ const DropDown = ({ list, i, isOpen, setIsOpen, item, classNameFn }) => {
     )
 }
 
-export default DropDown
+export default CustomDisclosure;
