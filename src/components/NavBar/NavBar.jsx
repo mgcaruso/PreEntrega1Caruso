@@ -5,6 +5,7 @@ import { FiChevronDown } from "react-icons/fi";
 import { useState } from 'react';
 import CartWidget from './CartWidget/CartWidget';
 import { Cross as Hamburger } from 'hamburger-react'
+import { transitionClasses } from '../../Transitions/TransitionClasses';
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -39,14 +40,7 @@ export default function NavBar() {
 
                                 <Disclosure.Button className="h-70 inline-flex items-center justify-center rounded-md text-primary-inverted"
                                 >
-
                                     <Hamburger toggled={open} size={20} />
-                                    {/* <span className="sr-only">Open main menu</span>
-                                    {open ? (
-                                        <FiX className="block h-6 w-6" aria-hidden="true" />
-                                    ) : (
-                                        <FiMenu className="block h-6 w-6" aria-hidden="true" />
-                                    )} */}
                                 </Disclosure.Button>
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -131,74 +125,88 @@ export default function NavBar() {
 
                         </div>
                     </div>
+                    {/* Dropdown menu - Animated */}
+                    <Transition
+                        show={open}
+                        {...transitionClasses.flyOutTop}
+                    >
+                        <Disclosure.Panel className="sm:hidden bg-ultra-light drop-shadow-lg">
+                            <div className="space-y-1 pb-3">
+                                {navigation.map((item, i) => (
 
-                    <Disclosure.Panel className="sm:hidden bg-ultra-light drop-shadow-lg">
-                        <div className="space-y-1 pb-3">
-                            {navigation.map((item, i) => (
+                                    item.name === "Categories" ?
 
-                                item.name === "Categories" ?
+                                        (
+                                            //Category container
+                                            <div key={i} className="mt-2 bg-ultra-light">
 
-                                    (
-                                        //Category container
-                                        <div key={i} className="mt-2 bg-ultra-light">
+                                                <>
+                                                    <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between text-primary-inverted" >{item.name}
 
-                                            <>
-                                                <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between text-primary-inverted" >{item.name}
+                                                        <FiChevronDown
+                                                            className={`${isOpen ? 'rotate-180 transform' : ''
+                                                                } h-5 w-5 text-primary-inverted`}
+                                                        />
+                                                    </button>
 
-                                                    <FiChevronDown
-                                                        className={`${isOpen ? 'rotate-180 transform' : ''
-                                                            } h-5 w-5 text-primary-inverted`}
-                                                    />
-                                                </button>
+                                                    <Transition
+                                                        show={isOpen}
+                                                        {...transitionClasses.flyOutTop}
+                                                    >
 
-
-                                                {
-                                                    isOpen &&
-                                                    <section className="categories-section pl-4">
-                                                        {
-                                                            categories.map((category, index) =>
-
-                                                                <Disclosure.Button
-                                                                    onClick={()=> setIsOpen(false)}
-                                                                    key={index}
-                                                                    as="a"
-                                                                    href="#"
-                                                                    className={classNames(
-                                                                        item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                                                        'block rounded-md px-3 py-2 text-base font-normal'
-                                                                    )}
-                                                                    aria-current={item.current ? 'page' : undefined}
-                                                                >
-                                                                    {category}
-
-                                                                </Disclosure.Button>)
-                                                        }
-                                                    </section>
-                                                }
+                                                    {
+                                                        isOpen &&
 
 
-                                            </>
+                                                            <section className="categories-section pl-4">
+                                                                {
+                                                                    categories.map((category, index) =>
 
-                                        </div>
+                                                                        <Disclosure.Button
+                                                                            onClick={() => setIsOpen(false)}
+                                                                            key={index}
+                                                                            as="a"
+                                                                            href="#"
+                                                                            className={classNames(
+                                                                                item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
+                                                                                'block rounded-md px-3 py-2 text-base font-normal'
+                                                                            )}
+                                                                            aria-current={item.current ? 'page' : undefined}
+                                                                        >
+                                                                            {category}
 
-                                    )
-                                    :
-                                    <Disclosure.Button
-                                        key={item.name}
-                                        as="a"
-                                        href={item.href}
-                                        className={classNames(
-                                            item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                            'block rounded-md px-3 py-2 text-base font-medium'
-                                        )}
-                                        aria-current={item.current ? 'page' : undefined}
-                                    >
-                                        {item.name}
+                                                                        </Disclosure.Button>)
+                                                                }
+                                                            </section>
+                                                    }
 
-                                    </Disclosure.Button>
-                            ))}
-                        </div>
-                    </Disclosure.Panel>
+                                                    </Transition>
+
+                                                </>
+
+                                            </div>
+
+                                        )
+                                        :
+                                        <Disclosure.Button
+                                            key={item.name}
+                                            as="a"
+                                            href={item.href}
+                                            className={classNames(
+                                                item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
+                                                'block rounded-md px-3 py-2 text-base font-medium'
+                                            )}
+                                            aria-current={item.current ? 'page' : undefined}
+                                        >
+                                            {item.name}
+
+                                        </Disclosure.Button>
+                                ))}
+                            </div>
+
+                        </Disclosure.Panel>
+                    </Transition>
+
                 </>
             )}
         </Disclosure>
