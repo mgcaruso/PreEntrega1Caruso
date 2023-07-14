@@ -34,9 +34,22 @@ footer {
 
 main {
   min-height: var(--main-height);
-  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200%;
+
+
 }
 
 footer {
   height: var(--footer-height);
+}
+
+@media (min-width: 320px) {
+/*   
+  .background{
+    overflow: hidden;
+    object-fit: cover;
+    height: 150vh;
+  } */
 }

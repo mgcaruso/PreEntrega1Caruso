@@ -1,9 +1,10 @@
 import './navBar.css'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
+import { FiChevronDown } from "react-icons/fi";
 import { useState } from 'react';
 import CartWidget from './CartWidget/CartWidget';
+import { Cross as Hamburger } from 'hamburger-react'
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -24,6 +25,7 @@ function classNames(...classes) {
 export default function NavBar() {
 
     const [isOpen, setIsOpen] = useState(false);
+    console.log(isOpen)
 
     return (
         <Disclosure id="navbar" as="nav" className="bg-primary">
@@ -34,14 +36,17 @@ export default function NavBar() {
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 
                                 {/* Mobile menu button*/}
-                                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2                text-primary-inverted hover:bg-primary-inverted hover:text-primary focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+
+                                <Disclosure.Button className="h-70 inline-flex items-center justify-center rounded-md text-primary-inverted"
                                 >
-                                    <span className="sr-only">Open main menu</span>
+
+                                    <Hamburger toggled={open} size={20} />
+                                    {/* <span className="sr-only">Open main menu</span>
                                     {open ? (
                                         <FiX className="block h-6 w-6" aria-hidden="true" />
                                     ) : (
                                         <FiMenu className="block h-6 w-6" aria-hidden="true" />
-                                    )}
+                                    )} */}
                                 </Disclosure.Button>
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
@@ -127,7 +132,7 @@ export default function NavBar() {
                         </div>
                     </div>
 
-                    <Disclosure.Panel className="sm:hidden">
+                    <Disclosure.Panel className="sm:hidden bg-ultra-light drop-shadow-lg">
                         <div className="space-y-1 pb-3">
                             {navigation.map((item, i) => (
 
@@ -138,7 +143,7 @@ export default function NavBar() {
                                         <div key={i} className="mt-2 bg-ultra-light">
 
                                             <>
-                                                <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between" >{item.name}
+                                                <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between text-primary-inverted" >{item.name}
 
                                                     <FiChevronDown
                                                         className={`${isOpen ? 'rotate-180 transform' : ''
@@ -154,6 +159,7 @@ export default function NavBar() {
                                                             categories.map((category, index) =>
 
                                                                 <Disclosure.Button
+                                                                    onClick={()=> setIsOpen(false)}
                                                                     key={index}
                                                                     as="a"
                                                                     href="#"
