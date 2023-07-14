@@ -1,11 +1,11 @@
 import './navBar.css'
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { FiChevronDown } from "react-icons/fi";
 import { useState } from 'react';
 import CartWidget from './CartWidget/CartWidget';
 import { Cross as Hamburger } from 'hamburger-react'
 import { transitionClasses } from '../../Transitions/TransitionClasses';
+import MobileMenu from './MobileMenu/MobileMenu';
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -14,7 +14,7 @@ const navigation = [
     { name: 'Contact', href: '#', current: false },
 ]
 
-const categories = ["Classics", "Speed Cubes", "Mirror Cubes"]
+const categories = ["Classics", "Speed Cubes", "Mirror Cubes", "Whatever else"]
 
 
 function classNames(...classes) {
@@ -25,8 +25,7 @@ function classNames(...classes) {
 
 export default function NavBar() {
 
-    const [isOpen, setIsOpen] = useState(false);
-    console.log(isOpen)
+    const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
 
     return (
         <Disclosure id="navbar" as="nav" className="bg-primary">
@@ -130,81 +129,9 @@ export default function NavBar() {
                         show={open}
                         {...transitionClasses.flyOutTop}
                     >
-                        <Disclosure.Panel className="sm:hidden bg-ultra-light drop-shadow-lg">
-                            <div className="space-y-1 pb-3">
-                                {navigation.map((item, i) => (
+                        {/* DROP DOWN PANEL */}
+                        <MobileMenu navigation={navigation} categories={categories} isCategoriesOpen={isCategoriesOpen} setIsCategoriesOpen={setIsCategoriesOpen} />
 
-                                    item.name === "Categories" ?
-
-                                        (
-                                            //Category container
-                                            <div key={i} className="mt-2 bg-ultra-light">
-
-                                                <>
-                                                    <button onClick={() => setIsOpen(!isOpen)} style={{ width: "100%" }} className="rounded-md px-3 py-2 text-base font-medium flex justify-between text-primary-inverted" >{item.name}
-
-                                                        <FiChevronDown
-                                                            className={`${isOpen ? 'rotate-180 transform' : ''
-                                                                } h-5 w-5 text-primary-inverted`}
-                                                        />
-                                                    </button>
-
-                                                    <Transition
-                                                        show={isOpen}
-                                                        {...transitionClasses.flyOutTop}
-                                                    >
-
-                                                    {
-                                                        isOpen &&
-
-
-                                                            <section className="categories-section pl-4">
-                                                                {
-                                                                    categories.map((category, index) =>
-
-                                                                        <Disclosure.Button
-                                                                            onClick={() => setIsOpen(false)}
-                                                                            key={index}
-                                                                            as="a"
-                                                                            href="#"
-                                                                            className={classNames(
-                                                                                item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                                                                'block rounded-md px-3 py-2 text-base font-normal'
-                                                                            )}
-                                                                            aria-current={item.current ? 'page' : undefined}
-                                                                        >
-                                                                            {category}
-
-                                                                        </Disclosure.Button>)
-                                                                }
-                                                            </section>
-                                                    }
-
-                                                    </Transition>
-
-                                                </>
-
-                                            </div>
-
-                                        )
-                                        :
-                                        <Disclosure.Button
-                                            key={item.name}
-                                            as="a"
-                                            href={item.href}
-                                            className={classNames(
-                                                item.current ? 'bg-primary-inverted text-white' : 'text-primary-inverted hover:bg-neutral-lighter hover:text-primary-inverted',
-                                                'block rounded-md px-3 py-2 text-base font-medium'
-                                            )}
-                                            aria-current={item.current ? 'page' : undefined}
-                                        >
-                                            {item.name}
-
-                                        </Disclosure.Button>
-                                ))}
-                            </div>
-
-                        </Disclosure.Panel>
                     </Transition>
 
                 </>
