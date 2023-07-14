@@ -13,7 +13,7 @@ function App() {
 
       <NavBar />
 
-      <main className="flex justify-center items-center relative bg-gradient-to-r from-primary to-transparent">
+      <main className="flex justify-center items-center relative bg-gradient-to-r from-primary to-transparent flex-col sm:flex-row">
 
         <img className="m-4" src={animatedImg} alt="Animated Rubik's Cube" />
         <ItemListContainer title={"Solvix"} slogan={"Your Online Shop for Cubing Unmatched Excellence."} />
