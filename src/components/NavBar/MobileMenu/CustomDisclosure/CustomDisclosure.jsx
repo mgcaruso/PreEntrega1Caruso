@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { FiChevronDown } from "react-icons/fi";
-import { transitionClasses } from '../../../../Transitions/TransitionClasses';
+import { transitionClasses } from '../../../../utilities/Transitions/TransitionClasses';
 
 
 const CustomDisclosure = ({ list, i, isOpen, setIsOpen, item, classNameFn }) => {

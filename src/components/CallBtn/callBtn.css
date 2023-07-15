@@ -14,7 +14,7 @@
     transition: all .8s;
     cursor: pointer;
     position: relative;
-    background: #085a82;
+    background: var(--key-color);
     overflow: hidden;
 }
 

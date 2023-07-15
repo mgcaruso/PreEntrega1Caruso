@@ -1,11 +1,11 @@
 import './navBar.css'
-import { Disclosure,Transition } from '@headlessui/react'
+import { Disclosure, Transition } from '@headlessui/react'
 import { useState } from 'react';
 import CartWidget from './CartWidget/CartWidget';
 import { Cross as Hamburger } from 'hamburger-react'
-import { transitionClasses } from '../../Transitions/TransitionClasses';
+import { transitionClasses } from '../../utilities/Transitions/TransitionClasses';
 import MobileMenu from './MobileMenu/MobileMenu';
-import LogoSolvix from '../../assets/logo.png'
+import LogoSolvix from '../../assets/images/logo.png'
 import DropDown from './DropDown/DropDown';
 
 const navigation = [

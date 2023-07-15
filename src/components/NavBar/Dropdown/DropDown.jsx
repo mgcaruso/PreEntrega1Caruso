@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import { transitionClasses } from '../../../Transitions/TransitionClasses'
+import { transitionClasses } from '../../../utilities/Transitions/TransitionClasses'
 
 const DropDown = ({ index, categories }) => {
 

@@ -6,15 +6,32 @@
 @tailwind utilities;
 
 
-:root{
 
+:root {
+  /* COMPONENT HEIGHTS */
   --navbar-height: 10vh;
   --footer-height: 8vh;
   --full-height: 100vh;
   --main-height: calc(var(--full-height) - (var(--navbar-height) + var(--footer-height)));
-  --key-color: "#549ff3"
 
+  /* KEY COLORS INCLUDED IN TAILWIND CONFIG */
+  --primary: #ffffff;
+  --primary-hover: #f3f4f6;
+  --primary-inverted: #1A1A1C;
+  --primary-inverted-hover: #3D3D41;
+  --neutral: #6b7280;
+  --neutral-lighter: #DADCE0;
+  --ultra-light: #f3f4f6;
+  --btn-fill: #ba181b;
+  --btn-fill-hover: #a4161a;
+  --key-color: #3b75b8;
+  --key-color-hover: #549ff3;
+
+  /* FONTS */
+  --branding: "mokoto";
+  --body: "rubik";
 }
+
 
 * {
   margin: 0;
@@ -22,7 +39,6 @@
   box-sizing: border-box;
 
 }
-
 
 
 .App,
@@ -53,7 +69,7 @@ footer {
 }
 
 @media (min-width: 320px) {
-/*   
+  /*   
   .background{
     overflow: hidden;
     object-fit: cover;
@@ -65,3 +81,4 @@ footer {
   font-family: "Mokoto";
   src: url("./assets/fonts/mokoto.regular.ttf");
 }
+

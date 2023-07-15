@@ -1,9 +1,8 @@
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
 import './index.css'
-import mainImg from './assets/wall1.png';
-// import animatedImg from './assets/cube-animated.gif'
-import logoSolvix from './assets/logo-no-letters.png'
+import mainImg from './assets/images/wall1.png';
+import logoSolvix from './assets/images/logo-no-letters.png'
 
 
 function App() {
@@ -17,8 +16,7 @@ function App() {
 
       <main className="flex justify-center items-center relative bg-gradient-to-r from-primary to-transparent flex-col sm:flex-row">
 
-        {/* <img className="m-8" src={animatedImg} alt="Animated Rubik's Cube" /> */}
-        <img className="m-8 drop-shadow-sm" src={logoSolvix} alt="Animated Rubik's Cube" />
+        <img className="logo-img drop-shadow-md sm:m-8 mb-1 mt-8" src={logoSolvix} alt="Animated Rubik's Cube" />
         
         <div className="flex flex-col">
 
