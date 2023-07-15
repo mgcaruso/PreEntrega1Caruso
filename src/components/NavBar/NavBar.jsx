@@ -15,7 +15,7 @@ const navigation = [
     { name: 'Contact', href: '#', current: false },
 ]
 
-const categories = ["Classics", "Speed Cubes", "Mirror Cubes"]
+const categories = ["Classics", "Speedcubes", "Shape-Shifting Cubes", "Special Edition Cubes", "Accesories", "Miscellaneous"];
 
 
 function classNames(...classes) {
