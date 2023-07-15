@@ -19,7 +19,6 @@ export default {
         "btn-fill-hover": "var(--btn-fill-hover)",
         "key-color": "var(--key-color)",
         "key-color-hover": "var(--key-color-hover)"
-
       }
     },
     fontFamily: {
