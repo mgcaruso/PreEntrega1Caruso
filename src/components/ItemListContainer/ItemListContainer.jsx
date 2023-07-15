@@ -8,7 +8,7 @@ const ItemListContainer = ({ greeting, slogan }) => {
                 {greeting}
             </h1>
             <h2 className="slogan text-3xl font-body">{slogan}</h2>
-            <CallBtn />
+            <CallBtn word={"begin"} />
         </div>
     )
 }

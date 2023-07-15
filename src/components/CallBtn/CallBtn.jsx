@@ -1,13 +1,12 @@
 import './callBtn.css'
 
-const CallBtn = () => {
+const CallBtn = ({word}) => {
+
+    
+
     return (
         <div className="button py-4">
-            <div className="box">B</div>
-            <div className="box">E</div>
-            <div className="box">G</div>
-            <div className="box">I</div>
-            <div className="box">N</div>
+            { word.split("").map( (letter, index) => <div key={index} className="box">{letter.toUpperCase()}</div> )  }
         </div>
     )
 }
