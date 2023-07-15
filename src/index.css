@@ -61,24 +61,33 @@ main {
   background-repeat: no-repeat;
   background-size: 200%;
 
-
 }
 
 footer {
   height: var(--footer-height);
 }
 
-@media (min-width: 320px) {
-  /*   
-  .background{
-    overflow: hidden;
-    object-fit: cover;
-    height: 150vh;
-  } */
+
+@media (max-width: 564px) {
+
+  main {
+    flex-direction: column !important;
+  }
+
+  .logo-img {
+    height: 12rem;
+  }
+
+}
+
+@media (max-width: 320px){
+  main{
+    height: calc(var(--full-height) - var(--navbar-height));
+
+  }
 }
 
 @font-face {
   font-family: "Mokoto";
   src: url("./assets/fonts/mokoto.regular.ttf");
 }
-
