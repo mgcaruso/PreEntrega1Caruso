@@ -27,7 +27,7 @@
   --key-color: #3b75b8;
   --key-color-hover: #549ff3;
 
-  /* FONTS */
+  /* FONTS INCLUDED IN TAILWIND CONFIG*/
   --branding: "mokoto";
   --body: "rubik";
 }

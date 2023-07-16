@@ -15,7 +15,6 @@ function App() {
       <NavBar />
 
       <main className="flex justify-center items-center relative bg-gradient-to-r from-primary to-transparent flex-row">
-
         <img className="logo-img drop-shadow-md p-8" src={logoSolvix} alt="Animated Rubik's Cube" />
         <div className="flex flex-col">
           <ItemListContainer greeting={"Solvix"} slogan={"Your Online Shop for Cubing Unmatched Excellence."} />
